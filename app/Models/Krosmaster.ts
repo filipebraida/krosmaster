@@ -23,16 +23,16 @@ export default class Krosmaster extends BaseModel {
   public level: string
 
   @column()
-  public init: int
+  public init: number
 
   @column()
-  public mp: int
+  public mp: number
 
   @column()
-  public hp: int
+  public hp: number
 
   @column()
-  public ap: int
+  public ap: number
 
   @column()
   public path: string

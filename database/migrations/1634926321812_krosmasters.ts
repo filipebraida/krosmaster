@@ -3,7 +3,7 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class Krosmasters extends BaseSchema {
   protected tableName = 'krosmasters'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
@@ -15,15 +15,15 @@ export default class Krosmasters extends BaseSchema {
 
       table.string('name')
       table.string('figurine')
-      table.int('level')
-      table.int('init')
-      table.int('mp')
-      table.int('hp')
-      table.int('ap')
+      table.integer('level')
+      table.integer('init')
+      table.integer('mp')
+      table.integer('hp')
+      table.integer('ap')
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }
