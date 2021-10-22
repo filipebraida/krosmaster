@@ -13,6 +13,6 @@ export default class Krosmasters extends BaseSchema {
   }
 
   public async down() {
-    this.schema.alterTable(this.tableName, (table) => {})
+    this.schema.alterTable(this.tableName, () => {})
   }
 }
