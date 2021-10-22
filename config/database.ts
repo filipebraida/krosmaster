@@ -47,6 +47,15 @@ const databaseConfig: DatabaseConfig = {
       debug: false,
     },
 
+  },
+  pg: {
+    client: 'pg',
+    connection: {
+      // ....
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
   }
 }
 
