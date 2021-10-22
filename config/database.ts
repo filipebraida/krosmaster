@@ -58,6 +58,9 @@ const databaseConfig: DatabaseConfig = {
       migrations: {
         naturalSort: true,
       },
+      ssl: {
+        rejectUnauthorized: false,
+      },
       healthCheck: false,
       debug: false,
     },
