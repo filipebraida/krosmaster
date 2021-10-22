@@ -46,17 +46,16 @@ const databaseConfig: DatabaseConfig = {
       healthCheck: false,
       debug: false,
     },
-
-  },
-  pg: {
-    client: 'pg',
-    connection: {
-      // ....
-      ssl: {
-        rejectUnauthorized: false
+    pg: {
+      client: 'pg',
+      connection: {
+        // ....
+        ssl: {
+          rejectUnauthorized: false
+        }
       }
     }
-  }
+  },
 }
 
 export default databaseConfig
