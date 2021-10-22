@@ -56,7 +56,7 @@ export default class Krosmaster extends BaseModel {
     return Env.get('KROSARCHIVE') + this.path
   }
 
-  @computed
+  @computed()
   public get descriptionTruncate() {
     const text = this.loreTitle + ' ' + this.description
     return text.substring(0, 100) + '...'
