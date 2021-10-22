@@ -7,7 +7,7 @@ import Env from '@ioc:Adonis/Core/Env'
 
 const getKrosmasterList = async (url) => {
   try {
-    const response = await axios.get(url)
+    const response: any = await axios.get(url)
     const $ = cheerio.load(response.data)
     const nodes = $('a[data-classes]')
 
@@ -16,7 +16,7 @@ const getKrosmasterList = async (url) => {
     for (const node of nodes) {
       const krosmasterLink = $(node).attr('href')
       console.log('catching - ' + krosmasterLink)
-      const data = await getKrosmaster(krosmasterLink)
+      const data: any = await getKrosmaster(krosmasterLink)
       console.log('adding...')
 
       const krosmaster = new Krosmaster()
@@ -38,7 +38,7 @@ const getKrosmasterList = async (url) => {
 const getKrosmaster = async (url) => {
   try {
     const response = await axios.get(Env.get('KROSARCHIVE') + url)
-    const html = response.data
+    const html: any = response.data
     const $ = cheerio.load(html)
     const name = $('#KrosName').text().trim()
     const level = $('#KrosLvl').text().trim()
