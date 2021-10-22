@@ -15,6 +15,7 @@ export default class Krosmasters extends BaseSchema {
 
       table.string('name')
       table.string('figurine')
+      table.int('level')
       table.int('init')
       table.int('mp')
       table.int('hp')
