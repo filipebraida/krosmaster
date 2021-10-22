@@ -3,10 +3,7 @@ import Krosmaster from 'App/Models/Krosmaster'
 
 import axios from 'axios'
 import cheerio from 'cheerio'
-
-const host = 'https://krosarchive.es'
-
-const urlList = host + '/PT/seasons'
+import Env from '@ioc:Adonis/Core/Env'
 
 const getKrosmasterList = async (url) => {
   try {
@@ -19,7 +16,7 @@ const getKrosmasterList = async (url) => {
     for (const node of nodes) {
       const krosmasterLink = $(node).attr('href')
       console.log('catching - ' + krosmasterLink)
-      const data = await getKrosmaster(host + krosmasterLink)
+      const data = await getKrosmaster(krosmasterLink)
       console.log('adding...')
 
       const krosmaster = new Krosmaster()
@@ -40,7 +37,7 @@ const getKrosmasterList = async (url) => {
 
 const getKrosmaster = async (url) => {
   try {
-    const response = await axios.get(url)
+    const response = await axios.get(Env.get('KROSARCHIVE') + url)
     const html = response.data
     const $ = cheerio.load(html)
     const name = $('#KrosName').text().trim()
@@ -50,6 +47,12 @@ const getKrosmaster = async (url) => {
     const mp = $('#MP').text().trim()
     const hp = $('#HP').text().trim()
     const ap = $('#AP').text().trim()
+    const loreTitle = $('.lore-title').text().trim()
+    const description = $('#description').children().remove().end().text().trim()
+
+    const krosClass = $('#KrosClass > a:first-child').text()
+
+    const path = url
 
     return {
       name,
@@ -59,6 +62,10 @@ const getKrosmaster = async (url) => {
       mp,
       hp,
       ap,
+      loreTitle,
+      description,
+      krosClass,
+      path,
     }
   } catch (error) {
     throw error
@@ -67,7 +74,9 @@ const getKrosmaster = async (url) => {
 
 export default class KrosmasterSeeder extends BaseSeeder {
   public async run() {
-    // Write your database queries inside the run method
-    await getKrosmasterList(urlList)
+    const url = Env.get('KROSARCHIVE') + '/PT/seasons'
+    await getKrosmasterList(url)
+
+    //console.log(await getKrosmaster('/PT/profile/s1-exf-3'))
   }
 }
