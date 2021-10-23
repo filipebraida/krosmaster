@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Krosmaster extends BaseSchema {
-  protected tableName = 'krosmaster'
+export default class Krosmasters extends BaseSchema {
+  protected tableName = 'krosmasters'
 
   public async up() {
     this.schema.alterTable(this.tableName, (table) => {
