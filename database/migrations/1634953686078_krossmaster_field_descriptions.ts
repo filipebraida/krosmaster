@@ -5,7 +5,7 @@ export default class Krosmasters extends BaseSchema {
 
   public async up() {
     this.schema.alterTable(this.tableName, (table) => {
-      table.string('description', 1024)
+      table.string('description', 1024).alter()
     })
   }
 
