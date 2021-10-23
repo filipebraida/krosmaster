@@ -41,7 +41,12 @@ const getKrosmaster = async (url) => {
     const init = $('#KrosInit').text().trim()
     const mp = $('#MP').text().trim()
     const hp = $('#HP').text().trim()
-    const ap = $('#AP').text().trim()
+    var ap = $('#AP').text().trim()
+
+    if (isNaN(Number(ap))) {
+      ap = null!
+    }
+
     const loreTitle = $('.lore-title').text().trim()
     const description = $('#description').children().remove().end().text().trim()
 
