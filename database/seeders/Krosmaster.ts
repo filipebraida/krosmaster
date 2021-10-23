@@ -19,12 +19,7 @@ const getKrosmasterList = async (url) => {
       const data: any = await getKrosmaster(krosmasterLink)
       console.log('adding...')
 
-      const krosmaster = new Krosmaster()
-
-      await krosmaster.fill(data)
-
-      // Insert to the database
-      await krosmaster.save()
+      await Krosmaster.updateOrCreate({ path: data.path }, data)
     }
 
     return krosmasters
