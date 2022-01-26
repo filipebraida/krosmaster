@@ -19,5 +19,15 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-Route.get('/', 'KrosmastersController.index')
+Route.get('/', async ({ view }: HttpContextContract) => {
+  return view.render('index')
+}).as('index')
+
+Route.group(() => {
+  Route.get('/', 'KrosmastersController.index').as('index')
+  Route.get('/:id', 'KrosmastersController.show').as('show')
+})
+  .prefix('/krosmaster')
+  .as('krosmaster.')
