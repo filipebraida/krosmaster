@@ -6,20 +6,15 @@ export default class Krosmasters extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.string('name').notNullable()
+      table.string('version')
+      table.enum('rarity', ['commom', 'uncommon ', 'rare', 'collector']).notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
-
-      table.string('name')
-      table.string('figurine')
-      table.integer('level')
-      table.integer('init')
-      table.integer('mp')
-      table.integer('hp')
-      table.integer('ap')
     })
   }
 
