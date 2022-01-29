@@ -10,7 +10,7 @@ export default class Card extends BaseModel {
   public level: number
 
   @column()
-  public initiative: string
+  public initiative: number
 
   @column()
   public hp: number

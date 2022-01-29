@@ -1,21 +1,12 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Krosmasters extends BaseSchema {
-  protected tableName = 'krosmasters'
+export default class Seasons extends BaseSchema {
+  protected tableName = 'seasons'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('name').notNullable()
-      table.string('version')
-      table.enum('rarity', ['common', 'uncommon', 'rare', 'collector']).notNullable()
-      table.string('history')
-      table
-        .integer('collection_id')
-        .unsigned()
-        .notNullable()
-        .references('collections.id')
-        .onDelete('CASCADE')
+      table.integer('number').unique().unsigned().notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

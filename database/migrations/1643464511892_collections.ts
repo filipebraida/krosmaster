@@ -1,21 +1,17 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Cards extends BaseSchema {
-  protected tableName = 'cards'
+export default class Collections extends BaseSchema {
+  protected tableName = 'collections'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').notNullable()
-      table.integer('level').unsigned().notNullable()
-      table.integer('initiative').unsigned().notNullable()
-      table.integer('mp').unsigned().notNullable()
-      table.integer('hp').unsigned().notNullable()
-      table.integer('ap').unsigned().notNullable()
+      table.increments('id')
+      table.string('name').unique().notNullable()
       table
-        .integer('krosmaster_id')
+        .integer('season_id')
         .unsigned()
         .notNullable()
-        .references('krosmasters.id')
+        .references('seasons.id')
         .onDelete('CASCADE')
 
       /**

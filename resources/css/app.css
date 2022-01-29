@@ -1,3 +1,27 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import "inter-ui/inter.css";
+
+.rarity-collector{color: red !important; text-shadow: 0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black;}
+.rarity-common{color: black !important; text-shadow:0 0 2px white,0 0 2px white,0 0 2px white,0 0 2px white,0 0 2px white,0 0 2px white,0 0 2px white,0 0 2px white}
+.rarity-uncommon{color: white !important; text-shadow: 0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black;}
+.rarity-rare{color: gold !important; text-shadow: 0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black;}
+
+.p-attr {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: -8px; */
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;
+}
+
+.cost-type.AP{background-image: url("../images/icon-pa.png"); background-repeat: no-repeat;background-size: 100% 100%;}
+.cost-type.HP{background-image: url("../images/icon-pv.png"); background-repeat: no-repeat;background-size: 100% 100%;}
+.cost-type.MP{background-image: url("../images/icon-pm.png"); background-repeat: no-repeat;background-size: 100% 100%;}
+.cost-type.GG{background-image: url("../images/icon-lvl.png"); background-repeat: no-repeat;background-size: 100% 100%;}
+.cost-type.ini{background-image: url("../images/icon-ini.png"); background-repeat: no-repeat;background-size: 100% 100%;}

@@ -1,0 +1,94 @@
+<table class="w-full whitespace-no-wrap">
+  <thead>
+    <tr
+      class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+      <th class="px-4 py-3">Name</th>
+      <th class="px-4 py-3">Season</th>
+      <th class="px-4 py-3">Cards (#)</th>
+      <th class="px-4 py-3">Card Example</th>
+      <th class="px-4 py-3">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+    @each(krosmaster in krosmasters)
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3">
+          <div class="flex items-center text-sm">
+            <!-- Avatar with inset shadow -->
+            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+              <img class="object-cover w-full h-full rounded-full"
+                src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                alt="" loading="lazy" />
+              <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+            </div>
+            <div>
+              @set('rarityClass', 'rarity-commun')
+
+              @if(krosmaster.rarity == 'rare')
+                @set('rarityClass', 'rarity-rare')
+              @elseif(krosmaster.rarity == 'uncommon')
+                @set('rarityClass', 'rarity-uncommon')
+              @elseif(krosmaster.rarity == 'collector')
+                @set('rarityClass', 'rarity-collector')
+              @endif
+
+              <p class="font-semibold {{ rarityClass }}">
+                <a href="{{ route('krosmasters.show', { id: krosmaster.id }) }}">
+                  {{ krosmaster.fullName }}
+                </a>
+              </p>
+              <p class="text-xs text-gray-600 dark:text-gray-400">
+                Xelor
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="px-4 py-3 text-sm">
+          <div class="flex items-center text-sm">
+            <div>
+              <p p class="font-semibold">
+                <a href="{{ route('krosmasters.seasons', { id: krosmaster.collection.season.id } ) }}">
+                  {{ krosmaster.collection.season.fullName }}
+                </a>
+              </p>
+              <p class="text-xs text-gray-600 dark:text-gray-400">
+                <a href="{{ route('krosmasters.collections', { id: krosmaster.collection.id }) }}">
+                  {{ krosmaster.collection.name }}
+                </a>
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="px-4 py-3 text-sm">
+          @if(krosmaster.cards && krosmaster.cards.length > 0)
+            {{ krosmaster.cards.length }}
+          @end
+        </td>
+        <td class="px-4 py-3 text-sm">
+          @if(krosmaster.cards && krosmaster.cards.length > 0)
+            <div class="p-attr cost-type GG">{{ krosmaster.cards[0].level }}</div>
+            <div class="p-attr cost-type ini">{{ krosmaster.cards[0].level }}</div>
+            <div class="p-attr cost-type MP">{{ krosmaster.cards[0].level }}</div>
+            <div class="p-attr cost-type HP">{{ krosmaster.cards[0].level }}</div>
+            <div class="p-attr cost-type AP">{{ krosmaster.cards[0].level }}</div>
+          @endif
+        </td>
+        <td class="px-4 py-3">
+          <div class="flex items-center space-x-4 text-sm">
+            <button
+              class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+              aria-label="Edit">
+              <a href="{{ route('krosmasters.edit', { id: krosmaster.id }) }}">
+                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                  </path>
+                </svg>
+              </a>
+            </button>
+          </div>
+        </td>
+      </tr>
+    @endeach
+  </tbody>
+</table>

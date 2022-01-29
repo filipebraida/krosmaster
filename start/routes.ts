@@ -28,6 +28,11 @@ Route.get('/', async ({ view }: HttpContextContract) => {
 Route.group(() => {
   Route.get('/', 'KrosmastersController.index').as('index')
   Route.get('/:id', 'KrosmastersController.show').as('show')
+  Route.get('/:id/edit', 'KrosmastersController.edit').as('edit')
+  Route.post('/', 'KrosmastersController.store').as('store')
+
+  Route.get('/seasons/:id', 'KrosmastersController.seasons').as('seasons')
+  Route.get('/collections/:id', 'KrosmastersController.collections').as('collections')
 })
-  .prefix('/krosmaster')
-  .as('krosmaster.')
+  .prefix('/krosmasters')
+  .as('krosmasters')
